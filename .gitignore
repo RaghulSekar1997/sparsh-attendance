@@ -1,5 +1,7 @@
-# Credentials
+# Credentials — NEVER commit these
 .env
+config.yml
+*.json
 
 # Python
 venv/

@@ -2,7 +2,7 @@ name: Daily Attendance
 
 on:
   push:
-    branches: [main]   # runs on every push — REMOVE this line after first successful test
+    branches: [main]   # REMOVE this after first successful test
   schedule:
     # 7 PM UK time — BST (summer, UTC+1) = 18:00 UTC
     # In winter (GMT, UTC+0) change to: '0 19 * * *'
@@ -30,6 +30,15 @@ jobs:
           playwright install chromium
           playwright install-deps chromium
 
+      - name: Write config.yml from secret
+        run: echo "$CONFIG_YML" > config.yml
+        env:
+          CONFIG_YML: ${{ secrets.CONFIG_YML }}
+
+      - name: Write Google credentials from secret
+        run: echo "$GOOGLE_CREDENTIALS_JSON" > sparsh-attendance-5ee4c1c7e02b.json
+        env:
+          GOOGLE_CREDENTIALS_JSON: ${{ secrets.GOOGLE_CREDENTIALS_JSON }}
+
       - name: Run attendance script
         run: python main.py
-# test trigger
