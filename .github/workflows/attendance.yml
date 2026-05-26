@@ -1,6 +1,8 @@
 name: Daily Attendance
 
 on:
+  push:
+    branches: [main]   # runs on every push — REMOVE this line after first successful test
   schedule:
     # 7 PM UK time — BST (summer, UTC+1) = 18:00 UTC
     # In winter (GMT, UTC+0) change to: '0 19 * * *'
