@@ -32,3 +32,4 @@ jobs:
 
       - name: Run attendance script
         run: python main.py
+# test trigger
