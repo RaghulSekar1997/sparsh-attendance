@@ -1,0 +1,28 @@
+# =============================================================================
+# Attendance Automation — Configuration Template
+# =============================================================================
+# Copy this file to config.yml and fill in your real values.
+#   cp config.yml.example config.yml
+
+dolynk:
+  login_url:   "https://pro.dolynkcloud.com/#/login"
+  records_url: "https://pro.dolynkcloud.com/#/access/record/list"
+  username:    "your_email@example.com"
+  password:    "your_password"
+
+google:
+  credentials_json: "your-service-account.json"   # filename or full path
+  sheet_name:       "Your Google Sheet Name"
+  tab_name:         "Records"
+
+settings:
+  headless:     true
+  max_retries:  3
+  timeout_ms:   30000
+
+# Optional: trigger the daily email report immediately after each upload.
+# Leave webhook_url blank to disable (the daily time-based trigger still works).
+# See sparsh_daily_report.gs → WEBHOOK_SECRET for the matching key.
+apps_script:
+  webhook_url:  ""   # paste your Apps Script web app URL here after deploying
+  secret_key:   "sparsh-report-2026"

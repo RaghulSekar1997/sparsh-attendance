@@ -1,0 +1,16 @@
+# Credentials
+.env
+
+# Python
+venv/
+__pycache__/
+*.pyc
+*.pyo
+.python-version
+
+# Downloaded files (stored outside project in ~/Documents/attendance_downloads)
+downloads/
+logs/
+
+# macOS
+.DS_Store

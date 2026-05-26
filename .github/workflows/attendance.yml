@@ -1,0 +1,38 @@
+name: Daily Attendance
+
+on:
+  schedule:
+    # 7 PM UK time — BST (summer, UTC+1) = 18:00 UTC
+    # In winter (GMT, UTC+0) change to: '0 19 * * *'
+    - cron: '0 18 * * *'
+  workflow_dispatch:   # lets you click "Run workflow" manually from GitHub Actions tab
+
+jobs:
+  attendance:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Cache pip packages
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('requirements.txt') }}
+
+      - name: Install Python dependencies
+        run: pip install -r requirements.txt
+
+      - name: Install Playwright browser & system deps
+        run: |
+          playwright install chromium
+          playwright install-deps chromium
+
+      - name: Run attendance script
+        run: python main.py
