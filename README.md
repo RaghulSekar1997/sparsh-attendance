@@ -306,3 +306,4 @@ cat "/Users/raghulsekar/Desktop/claude/claude code/attendance_automation/logs/la
 
 **Google Sheets upload fails**
 → Ensure the Google Sheet is shared with the service account email found in your `.json` credentials file (`client_email` field).
+
